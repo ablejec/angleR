@@ -1,0 +1,284 @@
+% -*- TeX:Rnw -*-
+% ----------------------------------------------------------------
+% .R Sweave part file  *******************************************
+%
+<<>>=
+rm(list=ls(all=TRUE))
+newAngle <- function(...) NULL
+as.degs <- function(...) NULL
+as.mins <- function(...) NULL
+as.secs <- function(...) NULL
+
+@
+
+
+% ----------------------------------------------------------------
+\section{New angle}
+
+
+<<normalize.angle.2>>=
+normalize.angle <- function(x){
+x <- unclass(x)
+x <- x[1]+x[2]/60+x[3]/3600
+st <- floor(x)
+min <- floor((x-st)*60)
+sek <- (x-st-min/60)*3600
+return(c(st,min,sek))
+}
+normalize.angle(c(10,10,10))
+normalize.angle(c(10,70,71))
+alfa <- c(10,-20,-30)
+normalize.angle(alfa)
+round(normalize.angle(c(0,20,30))-normalize.angle(c(0,-20,-30)))
+@
+
+<<>>=
+newAngle <- function(d=0,m=0,s=0){
+sign <- sign(d)
+if(!sign<0) sign <- 1
+z <- c(abs(d),m,s)
+z <- unclass(as.degs(z))
+z <- normalize.angle(z)
+z <- structure(z,class=c("angle","dms"),sign = sign)
+return(z)
+}
+newAngle(10,20,30)
+newAngle(10,70,70)
+newAngle(-10,10,10)
+newAngle(0,0,0)
+@
+
+\section{Conversions}
+
+<<as.degs>>=
+as.degs <- function(x){
+if(inherits(x,"numeric")) return(structure(x,class=c("angle","degs")))
+if(inherits(x,"dms"))return(structure(attr(x,"sign")*(x[1]+x[2]/60+x[3]/3600),class=c("angle","degs")))
+
+}
+alfa <- newAngle(30,30,10)
+alfa
+as.degs(alfa)
+as.degs(-alfa)
+as.degs(30.5)
+as.degs(newAngle(0,0,0))
+@
+
+<<as.mins>>=
+as.mins <- function(x){
+if(inherits(x,"numeric")) return(structure(x,class=c("angle","mins")))
+if(inherits(x,"dms"))return(structure(
+(x[1]*60+x[2]+x[3]/60),
+class=c("angle","mins")))
+
+}
+alfa <- newAngle(30,30,10)
+alfa
+as.mins(alfa)
+@
+
+<<as.secs>>=
+as.secs <- function(x){
+if(inherits(x,"numeric")) return(structure(x,class=c("angle","secs")))
+if(inherits(x,"dms"))return(structure((x[1]*60+x[2])*60+x[3],class=c("angle","secs")))
+}
+alfa <- newAngle(30,30,10)
+alfa
+as.secs(alfa)
+@
+
+
+
+<<as.angle>>=
+as.angle <- function(x){
+
+}
+@
+
+
+
+Convert to degree, minute seconds form
+<<as.dms>>=
+as.dms <- function(x){
+if(inherits(x,"numeric")) x <- as.degs(x)
+if(inherits(x,"degs")){
+x <- unclass(x)
+st <- floor(x)
+min <- floor((x-st)*60)
+sek <- (x-st-min/60)*3600}
+return(newAngle(st,min,sek))
+}
+as.dms(30.5)
+alfa
+as.dms(as.degs(alfa))
+@
+
+<<is.dms>>=
+is.dms <- function(x) inherits(x,"dms")
+is.degs <- function(x) inherits(x,"degs")
+is.dmins <- function(x) inherits(x,"mins")
+is.dsecs <- function(x) inherits(x,"secs")
+
+@
+
+
+
+\section{Format and print}
+
+\subsection{\fct{zfill}}
+Formatiranje celih števil na nekaj mest z vodilnimi nièlami
+
+<<zfill>>=
+zfill <- function(x,digits=3){
+#nd <- 0
+#if(x>1) nd <- floor(log10(x))
+#z <- paste(c(rep("0",digits-nd-1),x),collapse="")
+z <- sprintf(paste("%0",digits,"d",sep=""),x)
+return(z)
+}
+sprintf("%04d",15)
+#
+zfill(9)
+zfill(0)
+zfill(30,2)
+@
+
+\clearpage
+<<format.angle>>=
+format.angle <- function(x,m.small=1,sep="",collapse=""){
+if(inherits(x,"dms")) {
+sign <- c("-"," ","+")[2+attr(x,"sign")]
+return(paste(sign,zfill(x[1],3),"° ",zfill(x[2],2),"' ",
+round(x[3],m.small),"''",sep=sep,collapse=collapse))
+}
+if(inherits(x,"degs")) return(
+paste(x,"°",sep=sep,collapse=collapse))
+if(inherits(x,"mins")) return(
+paste(x,"'",sep=sep,collapse=collapse))
+if(inherits(x,"secs")) return(
+paste(x,"''",sep=sep,collapse=collapse))
+}
+
+alfa <- newAngle(30,20,10.1)
+format(alfa)
+format(as.degs(alfa))
+format(as.mins(alfa))
+format(as.secs(alfa))
+
+@
+
+<<>>=
+print.angle <- function(x){
+if(inherits(x,"angle")) print(noquote(format(x)))
+}
+alfa <- newAngle(30,20,10)
+print(alfa)
+alfa
+as.degs(alfa)
+as.mins(alfa)
+as.secs(alfa)
+@
+
+
+
+
+
+\clearpage
+\section{Arithmetic}
+
+\subsection{\fct{*.angle}}
+<<*.angle>>=
+"*.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"dms")) return(as.dms(e2*unclass(as.degs(e1))))
+else
+if(inherits(e2,"dms")) return(as.dms(e1*unclass(as.degs(e2))))
+}
+(alfa <- newAngle(30,10,20))
+(beta <- newAngle(20,20,50))
+beta*2
+beta+beta
+2*beta
+beta*0.5
+@
+
+\clearpage
+\subsection{\fct{+.angle}}
+<<+.angle>>=
+"+.angle" <- function(e1,e2){
+if(nargs()==1) return(e1)
+if(inherits(e1,"dms")) e1 <- as.degs(e1)
+if(inherits(e2,"dms")) e2 <- as.degs(e2)
+z <- unclass(e1)+unclass(e2)
+return(as.dms(z))
+}
+(alfa <- newAngle(30,10,20))
+(beta <- newAngle(20,20,50))
+alfa+beta
+as.degs(alfa)
+@
+\clearpage
+\subsection{\fct{-.angle}}
+<<-.angle>>=
+"-.angle" <- function(e1,e2){
+if(is.dms(e1)){
+if(nargs()==1) {
+attr(e1,"sign") <- -attr(e1,"sign")
+return(e1)
+}
+else
+if(!is.dms(e2)) stop("! Non angle argument e2")
+return(e1+(-e2))
+}
+stop("! Non angle argument e1")
+}
+(alfa <- newAngle(30,10,20))
+(beta <- newAngle(20,20,50))
+-beta
+alfa-beta
+alfa-alfa
+beta+beta
+2*beta
+@
+
+\clearpage
+\subsection{\fct{/.angle}}
+<</.angle>>=
+"/.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"dms")&inherits(e2,"numeric")) return(as.dms(unclass(as.degs(e1))/e2))
+if(inherits(e1,"dms")&inherits(e2,"angle")) return(unclass(as.degs(e1))/unclass(as.degs(e2)))
+}
+(alfa <- newAngle(30,15,25))
+(beta <- newAngle(20,25,55))
+beta/2
+beta/beta
+alfa/beta
+beta/0.5
+newAngle(180,0,0)/newAngle(45,0,0)
+newAngle(180,0,0)-3*newAngle(45,0,0)
+newAngle(180,0,0)-2*newAngle(45,0,0)
+newAngle(180,0,0)-2*newAngle(445,0,0)
+newAngle(180,0,0)+2*newAngle(445,0,0)
+@
+
+\clearpage
+\section{Calculations}
+
+<<>>=
+alfa
+beta
+alfa-beta+2*(beta/2)-alfa
+beta-2*(beta/2)
+alfa-alfa
+-alfa
+-alfa+newAngle(0,0,0)
+-alfa+alfa
+-alfa+beta-2*(beta/2)
+-alfa+beta-2*(beta/2)+alfa
+alfa+beta
+alfa-beta
+beta+alfa
+7*alfa
+@
+

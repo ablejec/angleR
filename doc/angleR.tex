@@ -1,0 +1,116 @@
+% -*- TeX:Rnw -*-
+% ----------------------------------------------------------------
+% .R Sweave file  ************************************************
+% ----------------------------------------------------------------
+%%
+% \VignetteIndexEntry{}
+% \VignetteDepends{}
+% \VignettePackage{}
+\documentclass[a4paper,12pt]{article}
+\usepackage[cp1250]{inputenc}
+%\usepackage[slovene]{babel}
+\newcommand{\SVNRevision}{$ $Rev: 13 $ $}
+%\newcommand{\SVNDate}{$ $Date:: 2009-04-1#$ $}
+\newcommand{\SVNId}{$ $Id: angleR.Rnw 13 2009-04-14 23:16:27Z ABlejec $ $}
+\input{abpkg}
+\input{abcmd}
+\input{abpage}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{amsmath,amssymb}
+\usepackage{colortbl}
+\usepackage{Sweave}
+\input{mysweave}
+\input{./figs/bla-concordance}
+%\SweaveOpts{echo=false}
+\setkeys{Gin}{width=0.7\textwidth}
+\usepackage{lmodern}
+\input{abfont}
+%\SweaveOpts{keep.source=true}
+%\setkeys{Gin}{width=0.8\textwidth} % set graphicx parameter
+% ----------------------------------------------------------------
+\begin{document}
+%% Sweave settings for includegraphics default plot size (Sweave default is 0.8)
+%% notice this must be after begin{document}
+%%% \setkeys{Gin}{width=0.9\textwidth}
+% ----------------------------------------------------------------
+\title{Angle arithmetic: \pkg{angleR}}
+\author{A. Blejec}
+%\address{}%
+%\email{}%
+%
+%\thanks{}%
+%\subjclass{}%
+%\keywords{}%
+
+%\date{}%
+%\dedicatory{}%
+%\commby{}%
+\maketitle
+% ----------------------------------------------------------------
+\begin{abstract}
+A package to perform angle manipulations in degrees, minutes and seconds. Formatting, conversions and arithmetic functions are included. Might be useful for specialists in geodesy and geometry.
+\end{abstract}
+% ----------------------------------------------------------------
+\tableofcontents
+
+%\input{koti}
+\include{angle}
+
+
+% ----------------------------------------------------------------
+%\bibliographystyle{chicago}
+%\addcontentsline{toc}{section}{\refname}
+%\bibliography{ab-general}
+%--------------------------------------------------------------
+
+%\clearpage
+%\appendix
+%\phantomsection\addcontentsline{toc}{section}{\appendixname}
+%\section{\R\ funkcije}
+%\input{}
+
+\clearpage
+\section*{SessionInfo}
+Windows 7 x64 (build 7601) Service Pack 1 \begin{itemize}\raggedright
+  \item R version 2.14.1 (2011-12-22), \verb|x86_64-pc-mingw32|
+  \item Locale: \verb|LC_COLLATE=Slovenian_Slovenia.1250|, \verb|LC_CTYPE=Slovenian_Slovenia.1250|, \verb|LC_MONETARY=Slovenian_Slovenia.1250|, \verb|LC_NUMERIC=C|, \verb|LC_TIME=Slovenian_Slovenia.1250|
+  \item Base packages: base, datasets, graphics, grDevices,
+    methods, splines, stats, utils
+  \item Other packages: Hmisc~3.9-2, patchDVI~1.8.1584,
+    survival~2.36-10
+  \item Loaded via a namespace (and not attached):
+    cluster~1.14.1, grid~2.14.1, lattice~0.20-0, tools~2.14.1
+\end{itemize}
+
+%\subsection*{View as vignette}
+%Project files can be viewed by this code:
+%
+%<<vignette,eval=false>>=
+%projectName <- ""
+%mainFile <- ""
+%library(tkWidgets)
+% getRootPath <- function() {
+% fp <- (strsplit(getwd(), "/"))[[1]]
+% file <- file.path(paste(fp[-length(fp)], collapse = "/"))
+% return(file)
+% }
+% fileName <- function(name="bla",ext="PDF") paste(name,ext,sep=".")
+%
+% openPDF(file.path(getRootPath(),"doc",fileName(mainFile,"PDF")))
+% viewVignette("viewVignette", projectName, file.path("../doc",fileName(mainFile,"RNW")))
+%@
+
+
+\vfill
+\hrule
+\vspace{2pt}
+\footnotesize{
+Revision \SVNId\hfill (c) A. Blejec%\input{../_COPYRIGHT.}
+%\SVNRevision ~/~ \SVNDate
+}
+
+
+
+\end{document}
+% ----------------------------------------------------------------
+

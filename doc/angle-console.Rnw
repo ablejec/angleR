@@ -1,0 +1,1708 @@
+% -*- TeX:Rnw -*-
+% ----------------------------------------------------------------
+% .R Sweave part file  *******************************************
+%
+\usepackage[cp1250]{inputenc} %% must be here for Sweave encoding check
+<<Author:,echo=FALSE>>=
+###################################################
+##                                               ##
+## (c) Andrej Blejec (andrej.blejec@nib.si)      ##
+##                                               ##
+###################################################
+@
+
+zfill <- function(x,digits=3){
+nd <- 0
+if(x>1) nd <- floor(log10(x))
+z <- paste(c(rep("0",digits-nd-1),x),collapse="")
+z <- sprintf(paste("%0",digits,"d",sep=""),x)
+return(z)
+}
+sprintf("%04d",15)
+#
+zfill(9)
+zfill(0)
+zfill(30,2)
+
+
+%nd <- 0
+%if(x>1) nd <- floor(log10(x))
+%z <- paste(c(rep("0",digits-nd-1),x),collapse="")
+
+
+zfill <- function(x,digits=3){
+#nd <- 0
+#if(x>1) nd <- floor(log10(x))
+#z <- paste(c(rep("0",digits-nd-1),x),collapse="")
+z <- sprintf(paste("%0",digits,"d",sep=""),x)
+return(z)
+}
+sprintf("%04d",15)
+#
+zfill(9)
+zfill(0)
+zfill(30,2)
+
+
+sapply(vec, "+", 1)
+vec
+sapply(vec, "+", 1)
+vec=10
+sapply(vec, "+", 1)
+vec=c(1,2,3,4)
+sapply(vec, "+", 1)
+vec
+vec+1
+sapply(vec, "+")
+get.anywhere("+")
+getAnywhere("+")
+getAnywhere("*")
+getAnywhere(".Primitive")
+base:::.Primitive
+base:::+
+base:::"+"
+methods("+")
+getAnywhere("+.POSIXt")
+getAnywhere("+.POSIXt")
+methods("+")
+getAnywhere("+.Date")
+structure(1+1,class="bla")
+?structure
+structure(1:6,dim=c(2,3))
+structure(1:6,dim=c(2,2))
+structure(1:6,dim=c(2,3))
+bla=structure(1:6,dim=c(2,3))
+str(bla)
+bla=structure(1:6,dim=c(2,3),class="matrix")
+str(bla)
+is.matrix(bla)
+bla=structure(1:6,dim=c(2,3))
+is.matrix(bla)
+is.matrix
+bla=structure(c(30,30,30.5),class="angle")
+bla
+bla=structure(c(30,30,30.5),class="angle",unit=c("d","m","s"))
+bla
+getAnywhere("+.POSIXt")
+bla=structure(c(30,30,30.5),class="angle",units=c("degrees","minutes","seconds"))
+bla
+bla=structure(c(30,30,30.5),class="angle",units=c("degs","mins","secs"))
+bla
+
+newAngle <- function(d=0,m=0,s=0){
+z <- structure(c(d,m,s),class="angle",units=c("degs","mins","secs"))
+return(z)
+
+
+newAngle <- function(d=0,m=0,s=0){
+z <- structure(c(d,m,s),class="angle",units=c("degs","mins","secs"))
+return(z)
+}
+
+¸>
+newAngle <- function(d=0,m=0,s=0){
+z <- structure(c(d,m,s),class="angle",units=c("degs","mins","secs"))
+return(z)
+}
+
+
+print.angle <- function(x){
+if(class(x)="angle") stDMS(x)
+}
+alfa <- newAngle(30,20,10)
+print(alfa)
+
+
+print.angle <- function(x){
+if(class(x)=="angle") stDMS(x)
+}
+alfa <- newAngle(30,20,10)
+print(alfa)
+
+
+stDMS <- function(x,sep="",collapse=""){
+if(length(x)==1) x <- decSt(x)
+
+paste(zfill(x[1],3),"° ",zfill(x[2],2),"' ",
+round(x[3],1),"\"",sep=sep,collapse=collapse)
+}
+
+#
+cat(stDMS(30.5083),"\n")
+stDMS(c(30,30,12.3))
+stDMS(decSt(30.5083))
+stDMS(decSt(0.0083))
+
+
+source("C:/_Y/R/Jaka/doc/functions.R")
+
+print.angle <- function(x){
+if(class(x)=="angle") stDMS(x)
+}
+alfa <- newAngle(30,20,10)
+print(alfa)
+
+
+print.angle <- function(x){
+if(class(x)=="angle") stDMS(x)
+}
+alfa <- newAngle(30,20,10)
+print(alfa)
+
+
+
+print.angle <- function(x){
+if(class(x)=="angle") stDMS(x)
+}
+alfa <- newAngle(30,20,10)
+print(alfa)
+cat(alfa)
+methods(print)
+methods(cat)
+cat(stDMS(alfa))
+print.angle <- function(x){
+if(class(x)=="angle") stDMS(x)
+}
+alfa <- newAngle(30,20,10)
+print(alfa)
+cat(stDMS(alfa))
+
+print.angle <- function(x){
+if(class(x)=="angle") stDMS(x)
+}
+alfa <- newAngle(30,20,10)
+print(alfa)
+cat(stDMS(alfa)"\n")
+
+
+print.angle <- function(x){
+if(class(x)=="angle") stDMS(x)
+}
+alfa <- newAngle(30,20,10)
+print(alfa)
+cat(stDMS(alfa),"\n")
+
+
+print.angle <- function(x){
+if(class(x)=="angle") stDMS(x)
+}
+alfa <- newAngle(30,20,10.5)
+print(alfa)
+cat(stDMS(alfa),"\n")
+
+class(x)
+y
+class(x,y)
+class(c(x,y))
+class(y9
+class(y)
+y=newAngle(10,10,20)
+class(y)
+class(c(x,y))
+class(c(y,x))
+sapply(c(y,x),class)
+sapply(list(x,y),class)
+all(sapply(list(x,y),class)=="angle")
+inherits(y)
+?inherits
+inherits(y,"angle")
+inherits(x,"angle")
+1
+getAnywhere("+.POSIXt")
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+as.degs(newAngle(30,30,10))
+
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+alfa <- as.degs(newAngle(30,30,10))
+alfa
+
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+alfa <- newAngle(30,30,10)
+alfa
+alfa <- as.degs(alfa)
+alfa
+
+as.degs(19
+)
+
+newAngle <- function(d=0,m=0,s=0){
+z <- structure(c(d,m,s),class="angle",units=c("degs","mins","secs"))
+return(z)
+}
+
+newAngle()
+newAngle(1)
+1
+print(x)
+print(newAngle(1))
+print(alfa)
+rm(print.angle)
+newAngle(1)
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+alfa <- newAngle(30,30,10)
+print(alfa)
+alfa <- as.degs(alfa)
+alfa
+
+
+print.angle <- function(x){
+if(class(x)=="angle") z <- stDMS(x)
+return(z)
+}
+alfa <- newAngle(30,20,10.5)
+print(alfa)
+cat(stDMS(alfa),"\n")
+
+attrib(
+print.angle <- function(x){
+if(class(x)=="angle") {
+if(attr(x, "units")=="decdeg")
+z <- x
+else
+z <- stDMS(x)
+}
+return(z)
+}
+alfa <- newAngle(30,20,10.5)
+print(alfa)
+cat(stDMS(alfa),"\n")
+
+
+print.angle <- function(x){
+if(class(x)=="angle") {
+if(attr(x, "units")=="decdeg")
+z <- x
+else
+z <- stDMS(x)
+}
+return(z)
+}
+alfa <- newAngle(30,20,10.5)
+print(alfa)
+cat(stDMS(alfa),"\n")
+
+
+print.angle <- function(x){
+if(class(x)=="angle") {
+if(attr(x, "units")=="decdeg")
+z <- x
+else
+z <- stDMS(x)
+}
+return(z)
+}
+alfa <- newAngle(30,20,10.5)
+print(alfa)
+cat(stDMS(alfa),"\n")
+
+
+
+print.angle <- function(x){
+if(class(x)=="angle") {
+if(attr(x, "units")[1]=="decdeg")
+z <- x
+else
+z <- stDMS(x)
+}
+return(z)
+}
+alfa <- newAngle(30,20,10.5)
+print(alfa)
+cat(stDMS(alfa),"\n")
+
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+alfa <- newAngle(30,30,10)
+print(alfa)
+alfa <- as.degs(alfa)
+alfa
+
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+alfa <- newAngle(30,30,10)
+print(alfa)
+alfa <- as.degs(alfa)
+alfa
+
+
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+alfa <- newAngle(30,30,10)
+print(alfa)
+alfa <- as.degs(alfa)
+print(alfa)
+
+alfa
+str(alfa)
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+alfa <- newAngle(30,30,10)
+alfa
+alfa <- as.degs(alfa)
+print(alfa)
+
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+alfa <- newAngle(30,30,10)
+alfa
+alfa <- as.degs(alfa)
+print(alfa)
+
+
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+alfa <- newAngle(30,30,10)
+print(alfa)
+alfa <- as.degs(alfa)
+print(alfa)
+
+unlist(alfa)
+str(alfa)
+unclass(alfa)
+unlist(unclass(alfa))
+unclass(x)
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+alfa <- newAngle(30,30,10)
+print(alfa)
+alfa <- as.degs(alfa)
+print(alfa)
+
+
+
+print.angle <- function(x){
+if(class(x)=="angle") {
+if(attr(x, "units")[1]=="decdeg")
+print(unclass(x))
+else
+print(stDMS(x))
+}
+invisible(NULL)
+}
+alfa <- newAngle(30,20,10.5)
+print(alfa)
+cat(stDMS(alfa),"\n")
+
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+alfa <- newAngle(30,30,10)
+print(alfa)
+alfa <- as.degs(alfa)
+print(alfa)
+
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+alfa <- newAngle(30,30,10)
+alfa
+alfa <- as.degs(alfa)
+print(alfa)
+
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+alfa <- newAngle(30,30,10)
+alfa
+alfa <- as.degs(alfa)
+alfa
+
+alfa
+str(alfa)
+alfa[1]
+alfa[1,]
+alfa[,1]
+alfa[1]
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+alfa <- newAngle(30,30,10)
+alfa
+alfa <- as.degs(alfa)
+alfa
+
+
+
+print.angle <- function(x){
+if(class(x)=="angle") {
+if(attr(x, "units")[1]=="decdeg")
+print(unclass(x)[1])
+else
+print(stDMS(x))
+}
+invisible(NULL)
+}
+alfa <- newAngle(30,20,10.5)
+print(alfa)
+cat(stDMS(alfa),"\n")
+
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+alfa <- newAngle(30,30,10)
+alfa
+alfa <- as.degs(alfa)
+alfa
+
+decSt(30.50833333333333286)
+
+
+<<>>=
+as.dms <- function(x){
+st <- floor(x)
+min <- floor((x-st)*60)
+sek <- (x-st-min/60)*3600
+return(newAngle(st,min,sek))
+}
+as.dms(30.5)
+@
+
+
+
+.angle <- function(e1,e2){
+if(nargs()==1) return(e1)
+if(inherits(e1,"angle")) x <- as.degs(e1)
+if(inherits(e2,"angle")) y <- as.degs(e2)
+return(newAngle(as.dms(x+y))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+alfa+beta
+
+
+.angle <- function(e1,e2){
+if(nargs()==1) return(e1)
+if(inherits(e1,"angle")) x <- as.degs(e1)
+if(inherits(e2,"angle")) y <- as.degs(e2)
+return(newAngle(as.dms(x+y))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+alfa+beta
+
+
+
+.angle <- function(e1,e2){
+if(nargs()==1) return(e1)
+if(inherits(e1,"angle")) x <- as.degs(e1)
+if(inherits(e2,"angle")) y <- as.degs(e2)
+return(newAngle(as.dms(x+y))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+alfa+beta
+
+
+
+
+.angle <- function(e1,e2){
+if(nargs()==1) return(e1)
+if(inherits(e1,"angle")) x <- as.degs(e1)
+print(x)
+if(inherits(e2,"angle")) y <- as.degs(e2)
+return(newAngle(as.dms(x+y)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+alfa+beta
+
+
+.angle <- function(e1,e2){
+if(nargs()==1) return(e1)
+if(inherits(e1,"angle")) x <- as.degs(e1)
+if(inherits(e2,"angle")) y <- as.degs(e2)
+return(newAngle(as.dms(x+y)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+alfa+beta
+
+
+"+.angle" <- function(e1,e2){
+if(nargs()==1) return(e1)
+if(inherits(e1,"angle")) x <- as.degs(e1)
+if(inherits(e2,"angle")) y <- as.degs(e2)
+return(newAngle(as.dms(x+y)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+alfa+beta
+
+7%%2
+7%/%2
+
+"+.angle" <- function(e1,e2){
+if(nargs()==1) return(e1)
+if(inherits(e1,"angle")) x <- as.degs(e1)
+if(inherits(e2,"angle")) y <- as.degs(e2)
+z <- x+y
+for(i in 3:2)
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+return(z)
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+alfa+beta
+
+
+"+.angle" <- function(e1,e2){
+if(nargs()==1) return(e1)
+#if(inherits(e1,"angle")) x <- as.degs(e1)
+#if(inherits(e2,"angle")) y <- as.degs(e2)
+z <- x+y
+for(i in 3:2)
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+return(z)
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+alfa+beta
+
+alfa
+beta
+alfa+beta
+
+"+.angle" <- function(e1,e2){
+if(nargs()==1) return(e1)
+#if(inherits(e1,"angle")) x <- as.degs(e1)
+#if(inherits(e2,"angle")) y <- as.degs(e2)
+z <- unclass(x)+unclass(y)
+for(i in 3:2)
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+return(newAngle(z))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+alfa+beta
+
+unclass(alfa)
+unclass(alfa)
+str(alfa)
+unclass(alfa)[1.3]
+unclass(alfa)[1:3]
+
+"+.angle" <- function(e1,e2){
+if(nargs()==1) return(e1)
+#if(inherits(e1,"angle")) x <- as.degs(e1)
+#if(inherits(e2,"angle")) y <- as.degs(e2)
+z <- unclass(x)+unclass(y)
+for(i in 3:2)
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+return(newAngle(z))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+alfa+beta
+
+
+
+"+.angle" <- function(e1,e2){
+if(nargs()==1) return(e1)
+#if(inherits(e1,"angle")) x <- as.degs(e1)
+#if(inherits(e2,"angle")) y <- as.degs(e2)
+z <- unclass(x)[1:3]+unclass(y)[1:3]
+for(i in 3:2)
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+return(newAngle(z))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+alfa+beta
+
+
+"+.angle" <- function(e1,e2){
+if(nargs()==1) return(e1)
+#if(inherits(e1,"angle")) x <- as.degs(e1)
+#if(inherits(e2,"angle")) y <- as.degs(e2)
+z <- unclass(x)[1:3]+unclass(y)[1:3]
+for(i in 3:2)
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+return(newAngle(z))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+alfa+beta
+
+unclass(alfa)*2
+unclass(alfa)
+unclass(alfa)+unclass(beta)
+unclass(alfa)+unclass(beta)
+
+"+.angle" <- function(e1,e2){
+if(nargs()==1) return(e1)
+#if(inherits(e1,"angle")) x <- as.degs(e1)
+#if(inherits(e2,"angle")) y <- as.degs(e2)
+z <- unclass(e1)+unclass(e2)
+for(i in 3:2)
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+return(newAngle(z))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+alfa+beta
+
+cat(print(alfa+beta))
+
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(-e1)
+return(e1-e2)
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+
+
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(-1*e1)
+return(e1+(-1*e2))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) z <- (-1*e1)
+z <- (e1+(-1*e2)
+return(z)
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) z <- (-1*e1)
+z <- (e1+(-1*e2)
+return(z)
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) z <- (-1*e1)
+z <- (e1+(-1*e2))
+return(z)
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+
+
+normalize.angle <- function(x){
+z <- x
+for(i in 3:2)
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+newAngle(z)
+}
+
+alfa <- newAngle(30,70,70)
+normalize(alfa)
+
+
+newAngle <- function(d=0,m=0,s=0){
+z <- c(d,m,s)
+for(i in 3:2){
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+z <- structure(z,class="angle",units=c("degs","mins","secs"))
+return(z)
+}
+
+
+newAngle <- function(d=0,m=0,s=0){
+z <- c(d,m,s)
+for(i in 3:2){
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+z <- structure(z,class="angle",units=c("degs","mins","secs"))
+return(z)
+}
+
+nweAngle(10,20,30)
+
+
+newAngle <- function(d=0,m=0,s=0){
+z <- c(d,m,s)
+for(i in 3:2){
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+z <- structure(z,class="angle",units=c("degs","mins","secs"))
+return(z)
+}
+
+newAngle(10,20,30)
+
+¸>
+newAngle <- function(d=0,m=0,s=0){
+z <- c(d,m,s)
+for(i in 3:2){
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+z <- structure(z,class="angle",units=c("degs","mins","secs"))
+return(z)
+}
+
+newAngle(10,20,30)
+
+
+newAngle <- function(d=0,m=0,s=0){
+z <- c(d,m,s)
+for(i in 3:2){
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+}
+z <- structure(z,class="angle",units=c("degs","mins","secs"))
+return(z)
+}
+
+newAngle(10,20,30)
+
+
+newAngle <- function(d=0,m=0,s=0){
+z <- c(d,m,s)
+for(i in 3:2){
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+}
+z <- structure(z,class="angle",units=c("degs","mins","secs"))
+return(z)
+}
+
+newAngle(10,20,30)
+
+
+newAngle <- function(d=0,m=0,s=0){
+z <- c(d,m,s)
+for(i in 3:2){
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+}
+z <- structure(z,class="angle",units=c("degs","mins","secs"))
+return(z)
+}
+
+newAngle(10,20,30)
+newAngle(10,70,70)
+
+
+print.angle <- function(x){
+if(class(x)=="angle") {
+if(attr(x, "units")[1]=="decdeg")
+print(unclass(x)[1])
+else
+print(stDMS(x))
+}
+invisible(NULL)
+}
+alfa <- newAngle(30,20,10.5)
+print(alfa)
+cat(stDMS(alfa),"\n")
+
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="angle",units="decdeg")
+return(z)
+}
+alfa <- newAngle(30,30,10)
+alfa
+alfa <- as.degs(alfa)
+alfa
+
+
+as.dms <- function(x){
+st <- floor(x)
+min <- floor((x-st)*60)
+sek <- (x-st-min/60)*3600
+return(newAngle(st,min,sek))
+}
+as.dms(30.5)
+
+
+"+.angle" <- function(e1,e2){
+if(nargs()==1) return(e1)
+#if(inherits(e1,"angle")) x <- as.degs(e1)
+#if(inherits(e2,"angle")) y <- as.degs(e2)
+z <- unclass(e1)+unclass(e2)
+}
+return(newAngle(z))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+alfa+beta
+
+
+"+.angle" <- function(e1,e2){
+if(nargs()==1) return(e1)
+#if(inherits(e1,"angle")) x <- as.degs(e1)
+#if(inherits(e2,"angle")) y <- as.degs(e2)
+z <- unclass(e1)+unclass(e2)
+return(newAngle(z))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+alfa+beta
+
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(newAngle((-1*e1))
+return(e1+(-1*e2))
+
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(newAngle((-1*e1))
+else
+return(e1+(-1*e2))
+
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+
+-alfa
+
+-1*alfa
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return((-1*e1))
+else
+return(e1+(-1*e2))
+
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+
+
+normalize.angle <- function(x){
+z <- unclass(x)
+for(i in 3:2){
+if(z[i]<0) {
+z[i-1] <- z[i-1]-1
+z[i] <- 60+z[i]
+}
+}
+for(i in 3:2){
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+}
+return(newAngle(z))
+
+alfa <- newAngle(10,-20,-30)
+normalize(alfa)
+
+
+
+normalize.angle <- function(x){
+z <- unclass(x)
+for(i in 3:2){
+if(z[i]<0) {
+z[i-1] <- z[i-1]-1
+z[i] <- 60+z[i]
+}
+}
+for(i in 3:2){
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+}
+return(newAngle(z))
+}
+alfa <- newAngle(10,-20,-30)
+normalize(alfa)
+
+
+methods(angle)
+methods("angle")
+methods(print)
+methods(normalize)
+methods("+")
+normalize.angle <- function(x){
+z <- unclass(x)
+for(i in 3:2){
+if(z[i]<0) {
+z[i-1] <- z[i-1]-1
+z[i] <- 60+z[i]
+}
+}
+for(i in 3:2){
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+}
+return(newAngle(z))
+}
+normalize.angle
+normalize.angle(alfa)
+alfa
+degSt
+stDec()
+stDec(9,39,30)
+stDec("00939300")
+stDec("0")> normalize(alfa)
+alfa
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(normalize(-1*e1))
+else
+return(e1+(-1*e2))
+
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(normalize.angle(-1*e1))
+else
+return(e1+(-1*e2))
+
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+
+
+newAngle <- function(d=0,m=0,s=0){
+z <- c(d,m,s)
+normalize(z)
+z <- structure(z,class="angle",units=c("degs","mins","secs"))
+return(z)
+}
+
+newAngle(10,20,30)
+newAngle(10,70,70)
+
+
+newAngle <- function(d=0,m=0,s=0){
+z <- c(d,m,s)
+normalize.angle(z)
+z <- structure(z,class="angle",units=c("degs","mins","secs"))
+return(z)
+}
+
+newAngle(10,20,30)
+newAngle(10,70,70)
+
+
+normalize.angle <- function(x){
+z <- unclass(x)
+for(i in 3:2){
+if(z[i]<0) {
+z[i-1] <- z[i-1]-1
+z[i] <- 60+z[i]
+}
+}
+for(i in 3:2){
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+}
+return(z)
+}
+alfa <- newAngle(10,-20,-30)
+normalize.angle(c(10,-20,-30))
+
+
+
+normalize.angle <- function(x){
+z <- unclass(x)
+for(i in 3:2){
+if(z[i]<0) {
+z[i-1] <- z[i-1]-1
+z[i] <- 60+z[i]
+}
+}
+for(i in 3:2){
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+}
+return(z)
+}
+alfa <- newAngle(10,-20,-30)
+alfa
+normalize.angle(c(10,-20,-30))
+
+
+
+newAngle <- function(d=0,m=0,s=0){
+z <- c(d,m,s)
+normalize.angle(z)
+z <- structure(z,class="angle",units=c("degs","mins","secs"))
+return(z)
+}
+
+newAngle(10,20,30)
+newAngle(10,70,70)
+
+
+newAngle <- function(d=0,m=0,s=0){
+z <- c(d,m,s)
+normalize.angle(z)
+z <- structure(z,class="angle",units=c("degs","mins","secs"))
+return(z)
+}
+
+newAngle(10,20,30)
+newAngle(10,70,70)
+
+
+normalize.angle <- function(x){
+z <- unclass(x)
+for(i in 3:2){
+if(z[i]<0) {
+z[i-1] <- z[i-1]-1
+z[i] <- 60+z[i]
+}
+}
+for(i in 3:2){
+if(z[i]>=60) {
+z[i-1] <- z[i-1]+z[i]%/%60
+z[i] <- z[i]%%60
+}
+}
+return(z)
+}
+alfa <- newAngle(10,-20,-30)
+alfa
+normalize.angle(c(10,-20,-30))
+
+
+
+newAngle <- function(d=0,m=0,s=0){
+z <- c(d,m,s)
+z <- normalize.angle(z)
+z <- structure(z,class="angle",units=c("degs","mins","secs"))
+return(z)
+}
+
+newAngle(10,20,30)
+newAngle(10,70,70)
+
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(normalize.angle(-1*e1))
+else
+return(e1+(-1*e2))
+
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(normalize.angle(-1*e1))
+else
+return(e1+(-1*e2))
+
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+alfa-alfa
+
+alfa/2
+alfa
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(newAngle(-1*e1))
+else
+return(newAngle(e1+(-1*e2))
+
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+alfa-alfa
+
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(newAngle(-1*e1))
+else
+return(newAngle(e1+(-1*e2)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+alfa-alfa
+
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(newAngle(-1*e1))
+else
+return(newAngle(e1+(-1*e2)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+alfa-alfa
+
+
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(newAngle(-1*e1))
+else
+return(newAngle(e1+(-1*e2)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+alfa-alfa
+newAngle(alfa/2)
+newAngle(2*alfa)
+
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(newAngle(-1*e1))
+else
+return(newAngle(e1+(-1*e2)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+alfa-alfa
+newAngle(beta/2)
+newAngle(2*beta)
+
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(newAngle(-1*e1))
+else
+return(newAngle(e1+(-1*e2)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+alfa-alfa
+newAngle(beta/2)
+beta+beta
+newAngle(2*beta)
+
+
+as.degs <- function(x){
+if(!inherits(x,"angle")) stop("Not an angle!")
+z <- structure(x[1]+x[2]/60+x[3]/3600,class="decdeg")
+return(z)
+}
+alfa <- newAngle(30,30,10)
+alfa
+as.degs(alfa)
+
+
+as.dms <- function(x){
+st <- floor(x)
+min <- floor((x-st)*60)
+sek <- (x-st-min/60)*3600
+return(newAngle(st,min,sek))
+}
+as.dms(30.5)
+
+
+as.dms <- function(x){
+st <- floor(x)
+min <- floor((x-st)*60)
+sek <- (x-st-min/60)*3600
+return(newAngle(st,min,sek))
+}
+as.dms(30.5)
+as.dms(as.degs(alfa))
+
+
+as.dms <- function(x){
+st <- floor(x)
+min <- floor((x-st)*60)
+sek <- (x-st-min/60)*3600
+return(newAngle(st,min,sek))
+}
+as.dms(30.5)
+alfa
+as.dms(as.degs(alfa))
+
+
+"+.angle" <- function(e1,e2){
+if(nargs()==1) return(e1)
+if(inherits(e1,"angle")) x <- as.degs(e1)
+if(inherits(e2,"angle")) y <- as.degs(e2)
+#z <- unclass(e1)+unclass(e2)
+#return(newAngle(z))
+as.dms(x+y)
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+alfa+beta
+
+-alfa
+-1*alfa
+as.degs(alfa)
+as.degs(-alfa)
+beta
+alfa-beta
+as.dms(as.degs(alfa)-as.degs(beta))
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(newAngle(-1*e1))
+else
+return(e1+(-1*e2)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+alfa-alfa
+newAngle(beta/2)
+beta+beta
+newAngle(2*beta)
+
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(newAngle(-1*e1))
+else
+return(e1+(-1*e2))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+alfa-alfa
+newAngle(beta/2)
+beta+beta
+newAngle(2*beta)
+
+newAngle(2*beta)
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(newAngle(-1*e1))
+else
+return(e1+(-1*e2))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+as.dms(as.degs(alfa)-as.degs(beta))
+alfa-alfa
+newAngle(beta/2)
+beta+beta
+newAngle(2*beta)
+
+2*beta
+beta*2
+
+# uredi normalizacijo
+"*.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"angle")) return(as.dms(e2*as.degs(e1))
+elseif(return(inherits(e2,"angle"))) as.dms(e1*as.degs(e2))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+beta*2
+beta+beta
+2*beta
+beta+0.5
+
+
+# uredi normalizacijo
+"*.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"angle"))) return(as.dms(e2*as.degs(e1))
+elseif(return(inherits(e2,"angle"))) as.dms(e1*as.degs(e2))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+beta*2
+beta+beta
+2*beta
+beta+0.5
+
+
+# uredi normalizacijo
+"*.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"angle"))) return(as.dms(e2*as.degs(e1)))
+elseif(return(inherits(e2,"angle"))) as.dms(e1*as.degs(e2)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+beta*2
+beta+beta
+2*beta
+beta+0.5
+
+
+# uredi normalizacijo
+"*.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"angle"))) return(as.dms(e2*as.degs(e1)))
+elseif(return(inherits(e2,"angle"))) as.dms(e1*as.degs(e2)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+beta*2
+beta+beta
+2*beta
+beta+0.5
+
+
+# uredi normalizacijo
+"*.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"angle")) return(as.dms(e2*as.degs(e1)))
+elseif(return(inherits(e2,"angle")) as.dms(e1*as.degs(e2)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+beta*2
+beta+beta
+2*beta
+beta+0.5
+
+
+# uredi normalizacijo
+"*.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"angle")) return(as.dms(e2*as.degs(e1)))
+elseif(return(inherits(e2,"angle")) as.dms(e1*as.degs(e2)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+beta*2
+beta+beta
+2*beta
+beta+0.5
+
+
+# uredi normalizacijo
+"*.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"angle")) return(as.dms(e2*as.degs(e1)))
+else
+if(return(inherits(e2,"angle")) as.dms(e1*as.degs(e2)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+beta*2
+beta+beta
+2*beta
+beta+0.5
+
+
+# uredi normalizacijo
+"*.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"angle")) return(as.dms(e2*as.degs(e1)))
+else
+if(inherits(e2,"angle")) as.dms(e1*as.degs(e2)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+beta*2
+beta+beta
+2*beta
+beta+0.5
+
+
+# uredi normalizacijo
+"*.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"angle")) return(as.dms(e2*as.degs(e1)))
+else
+if(inherits(e2,"angle")) return(as.dms(e1*as.degs(e2)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+beta*2
+beta+beta
+2*beta
+beta+0.5
+
+
+# uredi normalizacijo
+"*.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"angle")) return(as.dms(e2*as.degs(e1)))
+else
+if(inherits(e2,"angle")) return(as.dms(e1*as.degs(e2)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+beta*2
+beta+beta
+2*beta
+beta*0.5
+
+
+# uredi normalizacijo
+"-.angle" <- function(e1,e2){
+if(nargs()==1) return(-1*e1)
+else
+return(e1+(-1*e2))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+-beta
+alfa-beta
+as.dms(as.degs(alfa)-as.degs(beta))
+alfa-alfa
+newAngle(beta/2)
+beta+beta
+newAngle(2*beta)
+
+
+# uredi normalizacijo
+"*.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"angle")) return(as.dms(e2*as.degs(e1)))
+else
+if(inherits(e2,"angle")) return(as.dms(e1*as.degs(e2)))
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+beta*2
+beta+beta
+2*beta
+beta*0.5
+
+alfa+3
+inherits(2)
+class(2)
+inherits(2,"numeric"))
+inherits(2,"numeric")
+
+# uredi normalizacijo
+"/.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"angle")&inherits(e2,"numeric")) return(as.dms(as.degs(e1)/e2))
+if(inherits(e1,"angle")&inherits(e2,"angle")) return(as.dms(as.degs(e1)/as.degs(e2)))
+
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+beta/2
+beta/beta
+alfa/beta
+beta/0.5
+
+
+# uredi normalizacijo
+"/.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"angle")&inherits(e2,"numeric")) return(as.dms(as.degs(e1)/e2))
+if(inherits(e1,"angle")&inherits(e2,"angle")) return(as.degs(e1)/as.degs(e2))
+
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+beta/2
+beta/beta
+alfa/beta
+beta/0.5
+
+
+# uredi normalizacijo
+"/.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"angle")&inherits(e2,"numeric")) return(as.dms(as.degs(e1)/e2))
+if(inherits(e1,"angle")&inherits(e2,"angle")) return(unclass(as.degs(e1)/as.degs(e2)))
+
+}
+alfa <- newAngle(30,10,20)
+beta <- newAngle(20,20,50)
+beta/2
+beta/beta
+alfa/beta
+beta/0.5
+
+
+# uredi normalizacijo
+"/.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"angle")&inherits(e2,"numeric")) return(as.dms(as.degs(e1)/e2))
+if(inherits(e1,"angle")&inherits(e2,"angle")) return(unclass(as.degs(e1)/as.degs(e2)))
+
+}
+alfa <- newAngle(30,15,25)
+beta <- newAngle(20,20,50)
+beta/2
+beta/beta
+alfa/beta
+beta/0.5
+
+
+# uredi normalizacijo
+"/.angle" <- function(e1,e2){
+if(nargs()==1) stop("Missing operand")
+if(inherits(e1,"angle")&inherits(e2,"numeric")) return(as.dms(as.degs(e1)/e2))
+if(inherits(e1,"angle")&inherits(e2,"angle")) return(unclass(as.degs(e1)/as.degs(e2)))
+
+}
+alfa <- newAngle(30,15,25)
+beta <- newAngle(20,25,55)
+beta/2
+beta/beta
+alfa/beta
+beta/0.5
+
+newAngle(180,0,0)/newAngle(45,0,0)
+newAngle(180,0,0)-3*newAngle(45,0,0)
+newAngle(180,0,0)-2*newAngle(45,0,0)
+newAngle(180,0,0)-2*newAngle(445,0,0)
+newAngle(180,0,0)+2*newAngle(445,0,0)
+cat(newAngle(180,0,0)+2*newAngle(445,0,0))
+history(1000)
+history(2000)
+history(9000)
+

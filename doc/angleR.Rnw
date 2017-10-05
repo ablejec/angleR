@@ -1,0 +1,116 @@
+% -*- TeX:Rnw -*-
+% ----------------------------------------------------------------
+% .R Sweave file  ************************************************
+% ----------------------------------------------------------------
+%%
+% \VignetteIndexEntry{}
+% \VignetteDepends{}
+% \VignettePackage{}
+\documentclass[a4paper,12pt]{article}
+\usepackage[cp1250]{inputenc}
+%\usepackage[slovene]{babel}
+\newcommand{\SVNRevision}{$ $Rev: 13 $ $}
+%\newcommand{\SVNDate}{$ $Date:: 2009-04-1#$ $}
+\newcommand{\SVNId}{$ $Id: angleR.Rnw 13 2009-04-14 23:16:27Z ABlejec $ $}
+\input{abpkg}
+\input{abcmd}
+\input{abpage}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{amsmath,amssymb}
+\usepackage{colortbl}
+\usepackage{Sweave}
+\input{mysweave}
+\SweaveOpts{eps=false,prefix.string=./figs/bla,concordance=true}
+%\SweaveOpts{echo=false}
+\setkeys{Gin}{width=0.7\textwidth}
+\usepackage{lmodern}
+\input{abfont}
+%\SweaveOpts{keep.source=true}
+%\setkeys{Gin}{width=0.8\textwidth} % set graphicx parameter
+% ----------------------------------------------------------------
+\begin{document}
+%% Sweave settings for includegraphics default plot size (Sweave default is 0.8)
+%% notice this must be after begin{document}
+%%% \setkeys{Gin}{width=0.9\textwidth}
+% ----------------------------------------------------------------
+\title{Angle arithmetic: \pkg{angleR}}
+\author{A. Blejec}
+%\address{}%
+%\email{}%
+%
+%\thanks{}%
+%\subjclass{}%
+%\keywords{}%
+
+%\date{}%
+%\dedicatory{}%
+%\commby{}%
+\maketitle
+% ----------------------------------------------------------------
+\begin{abstract}
+A package to perform angle manipulations in degrees, minutes and seconds. Formatting, conversions and arithmetic functions are included. Might be useful for specialists in geodesy and geometry.
+\end{abstract}
+% ----------------------------------------------------------------
+\tableofcontents
+<<initialize,echo=false,results=hide>>=
+options(width=70)
+library(Hmisc)
+#library(xlsReadWrite)
+@
+
+%\input{koti}
+\include{angle}
+
+
+% ----------------------------------------------------------------
+%\bibliographystyle{chicago}
+%\addcontentsline{toc}{section}{\refname}
+%\bibliography{ab-general}
+%--------------------------------------------------------------
+
+%\clearpage
+%\appendix
+%\phantomsection\addcontentsline{toc}{section}{\appendixname}
+%\section{\R\ funkcije}
+%\input{}
+
+\clearpage
+\section*{SessionInfo}
+<<sessionInfo,results=tex,echo=false>>=
+cat(win.version(),"\n")
+toLatex(sessionInfo())
+@
+
+
+%\subsection*{View as vignette}
+%Project files can be viewed by this code:
+%
+%<<vignette,eval=false>>=
+%projectName <- ""
+%mainFile <- ""
+%library(tkWidgets)
+% getRootPath <- function() {
+% fp <- (strsplit(getwd(), "/"))[[1]]
+% file <- file.path(paste(fp[-length(fp)], collapse = "/"))
+% return(file)
+% }
+% fileName <- function(name="bla",ext="PDF") paste(name,ext,sep=".")
+%
+% openPDF(file.path(getRootPath(),"doc",fileName(mainFile,"PDF")))
+% viewVignette("viewVignette", projectName, file.path("../doc",fileName(mainFile,"RNW")))
+%@
+
+
+\vfill
+\hrule
+\vspace{2pt}
+\footnotesize{
+Revision \SVNId\hfill (c) A. Blejec%\input{../_COPYRIGHT.}
+%\SVNRevision ~/~ \SVNDate
+}
+
+
+
+\end{document}
+% ----------------------------------------------------------------
+

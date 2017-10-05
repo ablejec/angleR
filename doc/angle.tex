@@ -1,0 +1,744 @@
+% -*- TeX:Rnw -*-
+% ----------------------------------------------------------------
+% .R Sweave part file  *******************************************
+%
+\usepackage[cp1250]{inputenc}
+\begin{Schunk}
+\begin{Sinput}
+> rm(list=ls(all=TRUE))
+> newAngle <- function(...) NULL
+> as.degs <- function(...) NULL
+> as.mins <- function(...) NULL
+> as.secs <- function(...) NULL
+\end{Sinput}
+\end{Schunk}
+
+
+% ----------------------------------------------------------------
+\section{New angle}
+
+
+\begin{Schunk}
+\begin{Sinput}
+> normalize.angle <- function(x){
++ x <- unclass(x)
++ x <- x[1]+x[2]/60+x[3]/3600
++ st <- floor(x)
++ min <- floor((x-st)*60)
++ sek <- (x-st-min/60)*3600
++ return(c(st,min,sek))
++ }
+> normalize.angle(c(10,10,10))
+\end{Sinput}
+\begin{Soutput}
+[1] 10 10 10
+\end{Soutput}
+\begin{Sinput}
+> normalize.angle(c(10,70,71))
+\end{Sinput}
+\begin{Soutput}
+[1] 11 11 11
+\end{Soutput}
+\begin{Sinput}
+> alfa <- c(10,-20,-30)
+> normalize.angle(alfa)
+\end{Sinput}
+\begin{Soutput}
+[1]  9 39 30
+\end{Soutput}
+\begin{Sinput}
+> round(normalize.angle(c(0,20,30))-normalize.angle(c(0,-20,-30)))
+\end{Sinput}
+\begin{Soutput}
+[1]   1 -19   0
+\end{Soutput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Sinput}
+> newAngle <- function(d=0,m=0,s=0){
++ z <- sign(d)*(abs(d)+m/60+s/3600)
++ z <- structure(z,class=c("angle"))
++ return(z)
++ }
+> str(newAngle(10,20,30))
+\end{Sinput}
+\begin{Soutput}
+Class 'angle'  num 10.3
+\end{Soutput}
+\begin{Sinput}
+> unclass(newAngle(10,70,70))
+\end{Sinput}
+\begin{Soutput}
+[1] 11.18611
+\end{Soutput}
+\begin{Sinput}
+> newAngle(-10,20,30)
+\end{Sinput}
+\begin{Soutput}
+[1] -10.34167
+attr(,"class")
+[1] "angle"
+\end{Soutput}
+\begin{Sinput}
+> newAngle(0,0,0)
+\end{Sinput}
+\begin{Soutput}
+[1] 0
+attr(,"class")
+[1] "angle"
+\end{Soutput}
+\end{Schunk}
+
+\section{Conversions}
+
+\begin{Schunk}
+\begin{Sinput}
+> as.degs <- function(x){
++ if(inherits(x,"numeric")) return(structure(x,class=c("angle"),units="degs"))
++ if(inherits(x,"angle")) return(structure(x,class="angle",units="degs"))
++ 
++ }
+> alfa <- newAngle(30,30,10)
+> alfa
+\end{Sinput}
+\begin{Soutput}
+[1] 30.50278
+attr(,"class")
+[1] "angle"
+\end{Soutput}
+\begin{Sinput}
+> as.degs(alfa)
+\end{Sinput}
+\begin{Soutput}
+[1] 30.50278
+attr(,"class")
+[1] "angle"
+attr(,"units")
+[1] "degs"
+\end{Soutput}
+\begin{Sinput}
+> as.degs(-alfa)
+\end{Sinput}
+\begin{Soutput}
+[1] -30.50278
+attr(,"class")
+[1] "angle"
+attr(,"units")
+[1] "degs"
+\end{Soutput}
+\begin{Sinput}
+> as.degs(30.5)
+\end{Sinput}
+\begin{Soutput}
+[1] 30.5
+attr(,"class")
+[1] "angle"
+attr(,"units")
+[1] "degs"
+\end{Soutput}
+\begin{Sinput}
+> as.degs(newAngle(0,0,0))
+\end{Sinput}
+\begin{Soutput}
+[1] 0
+attr(,"class")
+[1] "angle"
+attr(,"units")
+[1] "degs"
+\end{Soutput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Sinput}
+> as.mins <- function(x){
++ if(inherits(x,"numeric")) return(structure(x/60,class=c("angle"),units="mins"))
++ if(inherits(x,"angle")) return(structure(x,class="angle",units="mins"))
++ }
+> alfa <- newAngle(30,30,10)
+> alfa
+\end{Sinput}
+\begin{Soutput}
+[1] 30.50278
+attr(,"class")
+[1] "angle"
+\end{Soutput}
+\begin{Sinput}
+> as.mins(alfa)
+\end{Sinput}
+\begin{Soutput}
+[1] 30.50278
+attr(,"class")
+[1] "angle"
+attr(,"units")
+[1] "mins"
+\end{Soutput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Sinput}
+> as.secs <- function(x){
++ if(inherits(x,"numeric")) return(structure(x/3600,class="angle",units="secs"))
++ if(inherits(x,"angle"))return(structure(x,class="angle",units="secs"))
++ }
+> alfa <- newAngle(30,30,10.1)
+> alfa
+\end{Sinput}
+\begin{Soutput}
+[1] 30.50281
+attr(,"class")
+[1] "angle"
+\end{Soutput}
+\begin{Sinput}
+> as.secs(alfa)
+\end{Sinput}
+\begin{Soutput}
+[1] 30.50281
+attr(,"class")
+[1] "angle"
+attr(,"units")
+[1] "secs"
+\end{Soutput}
+\begin{Sinput}
+> beta <- as.secs(1)
+> beta
+\end{Sinput}
+\begin{Soutput}
+[1] 0.0002777778
+attr(,"class")
+[1] "angle"
+attr(,"units")
+[1] "secs"
+\end{Soutput}
+\begin{Sinput}
+> unclass(beta)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.0002777778
+attr(,"units")
+[1] "secs"
+\end{Soutput}
+\end{Schunk}
+
+
+
+\begin{Schunk}
+\begin{Sinput}
+> as.angle <- function(x){
++ if(inherits(x,"numeric")) class(x) <- "angle"
++ return(x)
++ }
+> as.angle(10.5)
+\end{Sinput}
+\begin{Soutput}
+[1] 10.5
+attr(,"class")
+[1] "angle"
+\end{Soutput}
+\end{Schunk}
+
+
+
+
+\begin{Schunk}
+\begin{Sinput}
+> is.degs <- function(x) attr(x,"units")=="degs"
+> is.mins <- function(x) attr(x,"units")=="mins"
+> is.secs <- function(x) attr(x,"units")=="secs"
+> 
+\end{Sinput}
+\end{Schunk}
+
+
+\begin{Schunk}
+\begin{Sinput}
+> c.angle <- function (..., recursive = FALSE)
++ structure(c(unlist(lapply(list(...), unclass))), class = "angle")
+> #
+> alfa
+\end{Sinput}
+\begin{Soutput}
+[1] 30.50281
+attr(,"class")
+[1] "angle"
+\end{Soutput}
+\begin{Sinput}
+> beta
+\end{Sinput}
+\begin{Soutput}
+[1] 0.0002777778
+attr(,"class")
+[1] "angle"
+attr(,"units")
+[1] "secs"
+\end{Soutput}
+\begin{Sinput}
+> str(c(alfa,beta))
+\end{Sinput}
+\begin{Soutput}
+Class 'angle'  num [1:2] 3.05e+01 2.78e-04
+\end{Soutput}
+\end{Schunk}
+
+
+\begin{Schunk}
+\begin{Sinput}
+> strsign.angle <- function(...) sign(unclass(...))
+> #
+> sign(c(as.angle(-10.5),as.angle(10)))
+\end{Sinput}
+\begin{Soutput}
+[1] -1  1
+attr(,"class")
+[1] "angle"
+\end{Soutput}
+\end{Schunk}
+
+
+
+
+
+\section{Format and print}
+
+\subsection{\fct{zfill}}
+Formatiranje celih števil na nekaj mest z vodilnimi nièlami
+
+\begin{Schunk}
+\begin{Sinput}
+> zfill <- function(x,digits=3){
++ #nd <- 0
++ #if(x>1) nd <- floor(log10(x))
++ #z <- paste(c(rep("0",digits-nd-1),x),collapse="")
++ z <- sprintf(paste("%0",digits,"d",sep=""),x)
++ return(z)
++ }
+> sprintf("%04d",15)
+\end{Sinput}
+\begin{Soutput}
+[1] "0015"
+\end{Soutput}
+\begin{Sinput}
+> #
+> zfill(9)
+\end{Sinput}
+\begin{Soutput}
+[1] "009"
+\end{Soutput}
+\begin{Sinput}
+> zfill(0)
+\end{Sinput}
+\begin{Soutput}
+[1] "000"
+\end{Soutput}
+\begin{Sinput}
+> zfill(30,2)
+\end{Sinput}
+\begin{Soutput}
+[1] "30"
+\end{Soutput}
+\end{Schunk}
+
+\clearpage
+\begin{Schunk}
+\begin{Sinput}
+> format.angle <- function(x,units=NULL,m.small=1,s.dec=0,sep="",collapse=NULL,dd="° ",mm="' ",ss="''"){
++ if(!is.null(units)) attr(x,"units") <- units
++ if(is.null(attr(x,"units"))) {
++ sign <- c("-"," ","+")[2+sign(x)]
++ x <- abs(x)
++ d <- floor(x)
++ m <- floor((x-d)*60)
++ s <- (x-d-m/60)*3600
++ return(paste(sign,zfill(d,3),dd,zfill(m,2),mm,
++ round(s,m.small),ss,sep=sep,collapse=collapse))
++ }
++ if(attr(x,"units")=="dms") {
++ sign <- c("-"," ","+")[2+sign(x)]
++ x <- abs(x)
++ d <- floor(x)
++ m <- floor((x-d)*60)
++ s <- round((x-d-m/60)*36000)
++ return(paste(sign,zfill(d,3),zfill(m,2),
++ zfill(s,3),sep=sep,collapse=collapse))
++ }
++ if(attr(x,"units")=="degs") return(
++ paste(round(x,m.small),"°",sep=sep,collapse=collapse))
++ if(attr(x,"units")=="mins") return(
++ paste(round(x*60,m.small),"'",sep=sep,collapse=collapse))
++ if(attr(x,"units")=="secs") return(
++ paste(round(x*3600,m.small),"''",sep=sep,collapse=collapse))
++ }
+> alfa <- newAngle(30,20,10.1)
+> beta <- newAngle(50,40,1.1)
+> format(alfa)
+\end{Sinput}
+\begin{Soutput}
+[1] "+030° 20' 10.1''"
+\end{Soutput}
+\begin{Sinput}
+> format(structure(c(alfa,-beta),class="angle",units="dms"))
+\end{Sinput}
+\begin{Soutput}
+[1] "+03020101" "-05040011"
+\end{Soutput}
+\begin{Sinput}
+> format(alfa,"mins")
+\end{Sinput}
+\begin{Soutput}
+[1] "1820.2'"
+\end{Soutput}
+\begin{Sinput}
+> format(as.degs(alfa))
+\end{Sinput}
+\begin{Soutput}
+[1] "30.3°"
+\end{Soutput}
+\begin{Sinput}
+> format(as.mins(alfa))
+\end{Sinput}
+\begin{Soutput}
+[1] "1820.2'"
+\end{Soutput}
+\begin{Sinput}
+> format(as.secs(alfa))
+\end{Sinput}
+\begin{Soutput}
+[1] "109210.1''"
+\end{Soutput}
+\begin{Sinput}
+> format(alfa,"dms")
+\end{Sinput}
+\begin{Soutput}
+[1] "+03020101"
+\end{Soutput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Sinput}
+> print.angle <- function(x){
++ if(inherits(x,"angle")) print(noquote(format(x)))
++ }
+> alfa <- newAngle(30,20,10)
+> print(alfa)
+\end{Sinput}
+\begin{Soutput}
+[1] +030° 20' 10''
+\end{Soutput}
+\begin{Sinput}
+> alfa
+\end{Sinput}
+\begin{Soutput}
+[1] +030° 20' 10''
+\end{Soutput}
+\begin{Sinput}
+> as.degs(alfa)
+\end{Sinput}
+\begin{Soutput}
+[1] 30.3°
+\end{Soutput}
+\begin{Sinput}
+> as.mins(alfa)
+\end{Sinput}
+\begin{Soutput}
+[1] 1820.2'
+\end{Soutput}
+\begin{Sinput}
+> as.secs(alfa)
+\end{Sinput}
+\begin{Soutput}
+[1] 109210''
+\end{Soutput}
+\begin{Sinput}
+> beta <- newAngle(50,40,1.1)
+> print(c(alfa,-beta))
+\end{Sinput}
+\begin{Soutput}
+[1] +030° 20' 10''  -050° 40' 1.1''
+\end{Soutput}
+\end{Schunk}
+
+
+
+
+
+\clearpage
+\section{Arithmetic}
+
+Angles are internally saved as decimal degrees, so usual arithmetic functions apply!
+
+\subsection{\fct{*.angle}}
+\begin{Schunk}
+\begin{Sinput}
+> (alfa <- newAngle(30,10,20))
+\end{Sinput}
+\begin{Soutput}
+[1] +030° 10' 20''
+\end{Soutput}
+\begin{Sinput}
+> (beta <- newAngle(20,20,50))
+\end{Sinput}
+\begin{Soutput}
+[1] +020° 20' 50''
+\end{Soutput}
+\begin{Sinput}
+> beta*2
+\end{Sinput}
+\begin{Soutput}
+[1] +040° 41' 40''
+\end{Soutput}
+\begin{Sinput}
+> beta+beta
+\end{Sinput}
+\begin{Soutput}
+[1] +040° 41' 40''
+\end{Soutput}
+\begin{Sinput}
+> 2*beta
+\end{Sinput}
+\begin{Soutput}
+[1] +040° 41' 40''
+\end{Soutput}
+\begin{Sinput}
+> beta*0.5
+\end{Sinput}
+\begin{Soutput}
+[1] +010° 10' 25''
+\end{Soutput}
+\end{Schunk}
+
+\clearpage
+\subsection{\fct{+.angle}}
+\begin{Schunk}
+\begin{Sinput}
+> (alfa <- newAngle(30,10,20))
+\end{Sinput}
+\begin{Soutput}
+[1] +030° 10' 20''
+\end{Soutput}
+\begin{Sinput}
+> (beta <- newAngle(20,20,50))
+\end{Sinput}
+\begin{Soutput}
+[1] +020° 20' 50''
+\end{Soutput}
+\begin{Sinput}
+> alfa+beta
+\end{Sinput}
+\begin{Soutput}
+[1] +050° 31' 10''
+\end{Soutput}
+\begin{Sinput}
+> as.degs(alfa)
+\end{Sinput}
+\begin{Soutput}
+[1] 30.2°
+\end{Soutput}
+\end{Schunk}
+\clearpage
+\subsection{\fct{-.angle}}
+\begin{Schunk}
+\begin{Sinput}
+> (alfa <- newAngle(30,10,20))
+\end{Sinput}
+\begin{Soutput}
+[1] +030° 10' 20''
+\end{Soutput}
+\begin{Sinput}
+> (beta <- newAngle(20,20,50))
+\end{Sinput}
+\begin{Soutput}
+[1] +020° 20' 50''
+\end{Soutput}
+\begin{Sinput}
+> -beta
+\end{Sinput}
+\begin{Soutput}
+[1] -020° 20' 50''
+\end{Soutput}
+\begin{Sinput}
+> alfa-beta
+\end{Sinput}
+\begin{Soutput}
+[1] +009° 49' 30''
+\end{Soutput}
+\begin{Sinput}
+> alfa-alfa
+\end{Sinput}
+\begin{Soutput}
+[1]  000° 00' 0''
+\end{Soutput}
+\begin{Sinput}
+> beta+beta
+\end{Sinput}
+\begin{Soutput}
+[1] +040° 41' 40''
+\end{Soutput}
+\begin{Sinput}
+> 2*beta
+\end{Sinput}
+\begin{Soutput}
+[1] +040° 41' 40''
+\end{Soutput}
+\end{Schunk}
+
+\clearpage
+\subsection{\fct{/.angle}}
+\begin{Schunk}
+\begin{Sinput}
+> (alfa <- newAngle(30,15,25))
+\end{Sinput}
+\begin{Soutput}
+[1] +030° 15' 25''
+\end{Soutput}
+\begin{Sinput}
+> (beta <- newAngle(20,25,55))
+\end{Sinput}
+\begin{Soutput}
+[1] +020° 25' 55''
+\end{Soutput}
+\begin{Sinput}
+> beta/2
+\end{Sinput}
+\begin{Soutput}
+[1] +010° 12' 57.5''
+\end{Soutput}
+\begin{Sinput}
+> beta/beta
+\end{Sinput}
+\begin{Soutput}
+[1] +001° 00' 0''
+\end{Soutput}
+\begin{Sinput}
+> alfa/beta
+\end{Sinput}
+\begin{Soutput}
+[1] +001° 28' 51.1''
+\end{Soutput}
+\begin{Sinput}
+> beta/0.5
+\end{Sinput}
+\begin{Soutput}
+[1] +040° 51' 50''
+\end{Soutput}
+\begin{Sinput}
+> newAngle(180,0,0)/newAngle(45,0,0)
+\end{Sinput}
+\begin{Soutput}
+[1] +004° 00' 0''
+\end{Soutput}
+\begin{Sinput}
+> newAngle(180,0,0)-3*newAngle(45,0,0)
+\end{Sinput}
+\begin{Soutput}
+[1] +045° 00' 0''
+\end{Soutput}
+\begin{Sinput}
+> newAngle(180,0,0)-2*newAngle(45,0,0)
+\end{Sinput}
+\begin{Soutput}
+[1] +090° 00' 0''
+\end{Soutput}
+\begin{Sinput}
+> newAngle(180,0,0)-2*newAngle(445,0,0)
+\end{Sinput}
+\begin{Soutput}
+[1] -710° 00' 0''
+\end{Soutput}
+\begin{Sinput}
+> newAngle(180,0,0)+2*newAngle(445,0,0)
+\end{Sinput}
+\begin{Soutput}
+[1] +1070° 00' 0''
+\end{Soutput}
+\end{Schunk}
+
+\clearpage
+\section{Calculations}
+
+\begin{Schunk}
+\begin{Sinput}
+> alfa
+\end{Sinput}
+\begin{Soutput}
+[1] +030° 15' 25''
+\end{Soutput}
+\begin{Sinput}
+> beta
+\end{Sinput}
+\begin{Soutput}
+[1] +020° 25' 55''
+\end{Soutput}
+\begin{Sinput}
+> alfa-beta+2*(beta/2)-alfa
+\end{Sinput}
+\begin{Soutput}
+[1]  000° 00' 0''
+\end{Soutput}
+\begin{Sinput}
+> beta-2*(beta/2)
+\end{Sinput}
+\begin{Soutput}
+[1]  000° 00' 0''
+\end{Soutput}
+\begin{Sinput}
+> alfa-alfa
+\end{Sinput}
+\begin{Soutput}
+[1]  000° 00' 0''
+\end{Soutput}
+\begin{Sinput}
+> -alfa
+\end{Sinput}
+\begin{Soutput}
+[1] -030° 15' 25''
+\end{Soutput}
+\begin{Sinput}
+> -alfa+newAngle(0,0,0)
+\end{Sinput}
+\begin{Soutput}
+[1] -030° 15' 25''
+\end{Soutput}
+\begin{Sinput}
+> -alfa+alfa
+\end{Sinput}
+\begin{Soutput}
+[1]  000° 00' 0''
+\end{Soutput}
+\begin{Sinput}
+> -alfa+beta-2*(beta/2)
+\end{Sinput}
+\begin{Soutput}
+[1] -030° 15' 25''
+\end{Soutput}
+\begin{Sinput}
+> -alfa+beta-2*(beta/2)+alfa
+\end{Sinput}
+\begin{Soutput}
+[1]  000° 00' 0''
+\end{Soutput}
+\begin{Sinput}
+> alfa+beta
+\end{Sinput}
+\begin{Soutput}
+[1] +050° 41' 20''
+\end{Soutput}
+\begin{Sinput}
+> alfa-beta
+\end{Sinput}
+\begin{Soutput}
+[1] +009° 49' 30''
+\end{Soutput}
+\begin{Sinput}
+> beta+alfa
+\end{Sinput}
+\begin{Soutput}
+[1] +050° 41' 20''
+\end{Soutput}
+\begin{Sinput}
+> 7*alfa
+\end{Sinput}
+\begin{Soutput}
+[1] +211° 47' 55''
+\end{Soutput}
+\end{Schunk}
+
